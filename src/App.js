@@ -11,7 +11,8 @@ import store from "./Redux/store";
 import { Provider } from 'react-redux';
 
 import Login from "./Pages/Login";
-import Listing from "./Pages/Listing";
+import Listing from "./Pages/Listing/Listing";
+import Signup from "./Pages/SignUp";
 
 function App() {
 
@@ -25,6 +26,10 @@ function App() {
 
                 <Route exact path="/listing">
                     <Listing />
+                </Route>
+
+                <Route exact path="/signup">
+                    <Signup />
                 </Route>
 
                 <Route path="/">

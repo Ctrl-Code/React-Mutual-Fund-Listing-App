@@ -9,9 +9,18 @@ const FullPage = styled.div`
     align-items: center;
 `;
 
+const InputField = styled.input`
+    outline: none;
+    border: 1px solid #c1bdbdde;
+    border-radius: 5px;
+    height: 50px;
+    padding: 0 10px;
+`;
+
 const exportObject = {
     styled,
     FullPage,
+    InputField,
 }
 
 export default exportObject;
