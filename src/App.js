@@ -13,6 +13,7 @@ import { Provider } from 'react-redux';
 import Login from "./Pages/Login";
 import Listing from "./Pages/Listing/Listing";
 import Signup from "./Pages/SignUp";
+import Details from "./Pages/Details/Details";
 
 function App() {
 
@@ -31,6 +32,9 @@ function App() {
                 <Route exact path="/signup">
                     <Signup />
                 </Route>
+
+                <Route exact path="/details"
+                    render={state => <Details {...state} />} />
 
                 <Route path="/">
                     <Redirect to="/login" />
