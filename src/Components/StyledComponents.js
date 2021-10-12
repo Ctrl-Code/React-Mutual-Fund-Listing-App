@@ -14,6 +14,7 @@ const InputField = styled.input`
     border: 1px solid #c1bdbdde;
     border-radius: 5px;
     height: 50px;
+    width: 100%;
     padding: 0 10px;
 `;
 

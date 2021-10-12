@@ -15,13 +15,16 @@ const Name = connect(state => {
         setName: name => dispatch(Actions.signup.setName(name)),
     }
 })(
-    ({ name, setName }) => <TextField
-        required
-        id="outlined-required"
-        label="Name"
-        value={name}
-        onChange={event => setName(event.target.value)}
-    />
+    ({ name, setName }) => <StyledComponents.TextFieldContainer>
+        <TextField
+            style={{ width: "100%" }}
+            required
+            id="outlined-required"
+            label="Name"
+            value={name}
+            onChange={event => setName(event.target.value)}
+        />
+    </StyledComponents.TextFieldContainer>
 );
 
 const Email = connect(state => {
@@ -33,13 +36,16 @@ const Email = connect(state => {
         setEmail: email => dispatch(Actions.signup.setEmail(email)),
     }
 })(
-    ({ email, setEmail }) => <TextField
-        required
-        id="outlined-required"
-        label="Email"
-        value={email}
-        onChange={event => setEmail(event.target.value)}
-    />
+    ({ email, setEmail }) => <StyledComponents.TextFieldContainer>
+        <TextField
+            style={{ width: "100%" }}
+            required
+            id="outlined-required"
+            label="Email"
+            value={email}
+            onChange={event => setEmail(event.target.value)}
+        />
+    </StyledComponents.TextFieldContainer>
 );
 
 const Password = connect(state => {
@@ -51,14 +57,17 @@ const Password = connect(state => {
         setPassword: password => dispatch(Actions.signup.setPassword(password)),
     }
 })(
-    ({ password, setPassword }) => <TextField
-        required
-        id="outlined-required"
-        label="Password"
-        type="password"
-        value={password}
-        onChange={event => setPassword(event.target.value)}
-    />
+    ({ password, setPassword }) => <StyledComponents.TextFieldContainer>
+        <TextField
+            style={{ width: "100%" }}
+            required
+            id="outlined-required"
+            label="Password"
+            type="password"
+            value={password}
+            onChange={event => setPassword(event.target.value)}
+        />
+    </StyledComponents.TextFieldContainer>
 );
 
 const genders = [
@@ -82,23 +91,26 @@ const Gender = connect(state => {
 })(
     ({ gender, setGender }) => {
 
-        return <TextField
-            id="outlined-select-currency"
-            select
-            label="Select"
-            value={gender}
-            onChange={event => setGender(event.target.value)}
-            helperText="Please select your gender"
-        >
-            {
-                genders.map((option) => (
-                    <MenuItem key={option.value} value={option.value}>
-                        {option.label}
-                    </MenuItem>
-                ))
-            }
+        return <StyledComponents.TextFieldContainer>
+            <TextField
+                style={{ width: "100%" }}
+                id="outlined-select-currency"
+                select
+                label="Select"
+                value={gender}
+                onChange={event => setGender(event.target.value)}
+                helperText="Please select your gender"
+            >
+                {
+                    genders.map((option) => (
+                        <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                        </MenuItem>
+                    ))
+                }
 
-        </TextField>
+            </TextField>
+        </StyledComponents.TextFieldContainer>
     });
 
 const DateOfBirth = connect(state => ({
@@ -108,14 +120,19 @@ const DateOfBirth = connect(state => ({
 }))(
     ({
         dob, setDob
-    }) => <StyledComponents.InputField type="date" value={dob} onChange={event => setDob(event.target.value)} />
+    }) => <StyledComponents.TextFieldContainer>
+            <StyledComponents.InputField type="date" value={dob} onChange={event => setDob(event.target.value)} />
+        </StyledComponents.TextFieldContainer>
 );
 
-const ButtonSignup = ({ onClick }) => <Button variant="contained"
-    onClick={onClick}
->
-    Sign Up
-</Button>
+const ButtonSignup = ({ onClick }) => <StyledComponents.TextFieldContainer>
+    <Button variant="contained"
+        style={{ width: "100%" }}
+        onClick={onClick}
+    >
+        Sign Up
+    </Button>
+</StyledComponents.TextFieldContainer>;
 
 const Signup = () => {
 
@@ -142,19 +159,26 @@ const Signup = () => {
             <StyledComponents.PageHeading>
                 Sign Up
             </StyledComponents.PageHeading>
+
             <form>
                 <Name />
-                <div />
+                <StyledComponents.MarginedDiv height="20px" />
+
                 <Email />
-                <div />
+                <StyledComponents.MarginedDiv height="20px" />
+
                 <Password />
-                <div />
+                <StyledComponents.MarginedDiv height="20px" />
+
                 <Gender />
-                <div />
+                <StyledComponents.MarginedDiv height="20px" />
+
                 <DateOfBirth />
-                <div />
+                <StyledComponents.MarginedDiv height="30px" />
+
                 <ButtonSignup onClick={handleClick} />
             </form>
+
         </StyledComponents.FullPage>
     )
 }
