@@ -55,6 +55,10 @@ const SubHeading = styled.div`
     padding: 0 10px;
 `;
 
+const TextFieldContainer = styled.div`
+    width: 300px;
+`;
+
 const exportObject = {
     styled,
     FullPage,
@@ -63,6 +67,7 @@ const exportObject = {
     PageHeading,
     MutualFundListingApp,
     MarginedDiv,
+    TextFieldContainer,
 }
 
 export default exportObject;

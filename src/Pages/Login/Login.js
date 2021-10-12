@@ -8,15 +8,17 @@ import { connect } from "react-redux";
 import Actions from "../../Redux/Actions";
 import { Redirect } from "react-router-dom";
 
+const StyledButtonContainer = StyledComponents.styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
 const Login = (props) => {
 
     const [redirect, setRedirection] = useState({
         redirect: false,
         path: "",
     });
-
-    if (redirect.redirect)
-        return <Redirect push to={redirect.path} />
 
     const { username, password, setUsername, setPassword } = props;
 
@@ -28,66 +30,75 @@ const Login = (props) => {
         }
     }
 
-    const handleSubmit = () => {
+    const handleButton = (path) => {
         setRedirection({
             redirect: true,
-            path: "/listing",
+            path,
         })
     }
 
-    const handleSignup = () => {
-        setRedirection({
-            redirect: true,
-            path: "/signup",
-        });
-    }
+    if (redirect.redirect)
+        return <Redirect push to={redirect.path} />
 
-    return (
-        <StyledComponents.FullPage>
+    else
+        return (
+            <StyledComponents.FullPage>
 
-            <StyledComponents.MutualFundListingApp />
+                <StyledComponents.MutualFundListingApp />
 
-            <StyledComponents.PageHeading>
-                Login
-            </StyledComponents.PageHeading>
+                <StyledComponents.PageHeading>
+                    Login
+                </StyledComponents.PageHeading>
 
-            <form>
+                <form>
 
-                <TextField
-                    required
-                    id="outlined-required"
-                    label="Username"
-                    value={username}
-                    onChange={event => handleUserInput("username", event.target.value)}
-                />
+                    <StyledComponents.TextFieldContainer>
+                        <TextField
+                            style={{ width: "100%" }}
+                            required
+                            id="outlined-required"
+                            label="Username"
+                            value={username}
+                            onChange={event => handleUserInput("username", event.target.value)}
+                        />
+                    </StyledComponents.TextFieldContainer>
 
-                <div />
+                    <StyledComponents.MarginedDiv height="20px" />
 
-                <TextField
-                    required
-                    id="outlined-required"
-                    label="Password"
-                    type="password"
-                    value={password}
-                    onChange={event => handleUserInput("password", event.target.value)}
-                />
+                    <StyledComponents.TextFieldContainer>
+                        <TextField
+                            style={{ width: "100%" }}
+                            required
+                            id="outlined-required"
+                            label="Password"
+                            type="password"
+                            value={password}
+                            onChange={event => handleUserInput("password", event.target.value)}
+                        />
+                    </StyledComponents.TextFieldContainer>
 
-                <div />
+                    <StyledComponents.MarginedDiv height="30px" />
 
-                <Button variant="contained"
-                    onClick={handleSubmit}
-                >
-                    Submit
-                </Button>
+                    <StyledButtonContainer>
 
-                <Button variant="contained"
-                    onClick={handleSignup}
-                >
-                    Sign Up
-                </Button>
-            </form>
-        </StyledComponents.FullPage >
-    );
+                        <Button variant="contained"
+                            style={{ marginBottom: "20px" }}
+                            onClick={() => handleButton("/listing")}
+                        >
+                            Submit
+                        </Button>
+
+                        <Button variant="contained"
+                            style={{ marginBottom: "20px" }}
+                            onClick={() => handleButton("/signup")}
+                        >
+                            Sign Up
+                        </Button>
+
+                    </StyledButtonContainer>
+                </form>
+            </StyledComponents.FullPage >
+        );
 }
 
 const ReduxLogin = connect(state => {
