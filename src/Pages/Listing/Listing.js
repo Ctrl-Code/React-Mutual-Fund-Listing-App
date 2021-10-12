@@ -3,6 +3,33 @@ import StyledComponents from "../../Components/StyledComponents";
 
 import { Redirect } from "react-router-dom";
 
+const RowWrapper = StyledComponents.styled.div`
+    background-color: #bcdff3;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: flex-start;
+    border: 2px solid orange;
+    margin-bottom: 20px;
+    width: 300px;
+    cursor: pointer;
+    transition: transform 222ms;
+
+    :hover{
+        transform: scale(1.08);
+    }
+`;
+
+const FundName = StyledComponents.styled.div`
+    font-family: "sans-serif";
+    font-weight: 900;
+`;
+
+const SchemeName = StyledComponents.styled.div`
+    font-family: "sans-serif";
+`;
+
 const MutualFunds = [
     {
         url: "https://api.mfapi.in/mf/100263",
@@ -29,7 +56,7 @@ const MutualFunds = [
         name: "SBI Mutual Fund",
         scheme: "SBI Magnum Income Fund - F R P - Long Term - Inst. (D)",
     }
-]
+];
 
 const Listing = () => {
 
@@ -58,26 +85,24 @@ const Listing = () => {
                 <StyledComponents.PageHeading>
                     Search Bar
                 </StyledComponents.PageHeading>
+
                 <div>
                     {
                         MutualFunds.map((option, index) => (
-                            <div key={option.url}
-                                onClick={() => onClick(index)}
-                            >
-                                <div>
-                                    {index + 1}
-                                    <div>
-                                        {option.name}
-                                    </div>
-                                    <div>
-                                        {option.scheme}
-                                    </div>
-                                </div>
-                            </div>
+                            <RowWrapper key={option.url}
+                                onClick={() => onClick(index)}>
+                                <FundName>
+                                    {option.name}
+                                </FundName>
+                                <SchemeName>
+                                    {option.scheme}
+                                </SchemeName>
+                            </RowWrapper>
                         ))
                     }
                 </div>
-            </StyledComponents.FullPage>
+
+            </StyledComponents.FullPage >
         );
 }
 

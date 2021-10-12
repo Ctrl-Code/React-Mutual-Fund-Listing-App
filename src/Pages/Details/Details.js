@@ -8,8 +8,8 @@ const MetaContainer = StyledComponents.styled.div`
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    min-width: 320px;
-    padding: 10px 0;
+    width: 320px;
+    padding: 10px;
     align-items: center;
     border: 2px solid orange;
 `;
@@ -18,9 +18,10 @@ const MetaRow = StyledComponents.styled.div`
     display: flex;
     font-weight: 500;
     font-family: monospace;
-    font-weight: ${props => props.fontWeight === true ? "900" : "200"
+    text-align: center;
+    font-weight: ${props => props.fontWeight === "true" ? "900" : "200"
     };
-    margin-bottom: ${props => props.marginBottom === true ? "5px" : "unset"
+    margin-bottom: ${props => props.marginBottom === "true" ? "5px" : "unset"
     };
 `;
 
@@ -46,30 +47,30 @@ const Meta = props => {
 
     if (loading)
         return <MetaContainer>
-            <MetaRow marginBottom={true}>Loading...</MetaRow>
-            <MetaRow fontWeight={true}
-                marginBottom={true}>Loading...</MetaRow>
-            <MetaRow marginBottom={true}>Loading...</MetaRow>
-            <MetaRow marginBottom={true}
-                fontWeight={true}>Loading...</MetaRow>
+            <MetaRow marginBottom="true">Loading...</MetaRow>
+            <MetaRow fontWeight="true"
+                marginBottom="true">Loading...</MetaRow>
+            <MetaRow marginBottom="true">Loading...</MetaRow>
+            <MetaRow marginBottom="true"
+                fontWeight="true">Loading...</MetaRow>
         </MetaContainer>
 
     return <MetaContainer>
 
-        <MetaRow fontWeight={true}>Fund House</MetaRow>
-        <MetaRow marginBottom={true}>{fundHouse}</MetaRow>
+        <MetaRow fontWeight="true">Fund House</MetaRow>
+        <MetaRow marginBottom="true">{fundHouse}</MetaRow>
 
-        <MetaRow fontWeight={true}>Scheme Name</MetaRow>
-        <MetaRow marginBottom={true}>{schemeName}</MetaRow>
+        <MetaRow fontWeight="true">Scheme Name</MetaRow>
+        <MetaRow marginBottom="true">{schemeName}</MetaRow>
 
-        <MetaRow fontWeight={true}>Scheme Type</MetaRow>
-        <MetaRow marginBottom={true}>{schemeType}</MetaRow>
+        <MetaRow fontWeight="true">Scheme Type</MetaRow>
+        <MetaRow marginBottom="true">{schemeType}</MetaRow>
 
-        <MetaRow fontWeight={true}>Scheme Category</MetaRow>
-        <MetaRow marginBottom={true}>{schemeCategory}</MetaRow>
+        <MetaRow fontWeight="true">Scheme Category</MetaRow>
+        <MetaRow marginBottom="true">{schemeCategory}</MetaRow>
 
-        <MetaRow fontWeight={true}>Scheme Code</MetaRow>
-        <MetaRow marginBottom={true}>{schemeCode}</MetaRow>
+        <MetaRow fontWeight="true">Scheme Code</MetaRow>
+        <MetaRow marginBottom="true">{schemeCode}</MetaRow>
     </MetaContainer>
 };
 
@@ -82,12 +83,12 @@ const NavData = props => {
 
             <MetaContainer>
                 <FlexContainer>
-                    <MetaRow fontWeight={true}>StartDate</MetaRow>
+                    <MetaRow fontWeight="true">StartDate</MetaRow>
                     <ColumnedDiv />
                     <MetaRow>Loading...</MetaRow>
                 </FlexContainer>
                 <FlexContainer>
-                    <MetaRow fontWeight={true}>EndDate</MetaRow>
+                    <MetaRow fontWeight="true">EndDate</MetaRow>
                     <ColumnedDiv />
                     <MetaRow>Loading...</MetaRow>
                 </FlexContainer>
@@ -96,7 +97,7 @@ const NavData = props => {
             <StyledComponents.MarginedDiv height="50px" />
 
             <StyledComponents.SubHeading>
-                Net Asset Value (NAV) throughout last 10 years
+                Net Asset Value (NAV) throughout last 5 years
             </StyledComponents.SubHeading>
 
             <StyledComponents.MarginedDiv height="20px" />
@@ -119,12 +120,12 @@ const NavData = props => {
             <StyledComponents.MarginedDiv height="10px" />
             <MetaContainer>
                 <FlexContainer>
-                    <MetaRow fontWeight={true}>StartDate</MetaRow>
+                    <MetaRow fontWeight="true">StartDate</MetaRow>
                     <ColumnedDiv />
                     <div>{startDate}</div>
                 </FlexContainer>
                 <FlexContainer>
-                    <MetaRow fontWeight={true}>EndDate</MetaRow>
+                    <MetaRow fontWeight="true">EndDate</MetaRow>
                     <ColumnedDiv />
                     <div>{endDate}</div>
                 </FlexContainer>
@@ -133,7 +134,7 @@ const NavData = props => {
             <StyledComponents.MarginedDiv height="50px" />
 
             <StyledComponents.SubHeading>
-                Net Asset Value (NAV) throughout last 10 years
+                Net Asset Value (NAV) throughout last 5 years
             </StyledComponents.SubHeading>
 
             <StyledComponents.MarginedDiv height="10px" />
