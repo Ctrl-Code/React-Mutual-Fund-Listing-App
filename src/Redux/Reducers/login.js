@@ -3,15 +3,15 @@ import actions from "../Actions";
 const actionsLoginTypes = actions.login.types;
 
 const defaultState = {
-    username: "",
+    email: "",
     password: "",
 };
 
 const functions = {
-    setUsername: (state, username) => {
+    setEmail: (state, email) => {
         return {
             ...state,
-            username,
+            email,
         }
     },
 
@@ -26,8 +26,8 @@ const functions = {
 function login(state = defaultState, action) {
     switch (action.type) {
 
-        case actionsLoginTypes.setUsername: return functions
-            .setUsername(state, action.username);
+        case actionsLoginTypes.setEmail: return functions
+            .setEmail(state, action.email);
 
         case actionsLoginTypes.setPassword: return functions
             .setPassword(state, action.password);

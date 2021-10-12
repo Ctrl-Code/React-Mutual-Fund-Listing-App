@@ -20,17 +20,21 @@ const Login = (props) => {
         path: "",
     });
 
-    const { username, password, setUsername, setPassword } = props;
+    const { email, password,
+        setEmail, setPassword,
+        setSignupEmail, setSignupPassword } = props;
 
     const handleUserInput = (field, value) => {
         switch (field) {
-            case "username": setUsername(value); break;
+            case "email": setEmail(value); break;
             case "password": setPassword(value); break;
             default: break;
         }
     }
 
     const handleButton = (path) => {
+        setSignupEmail(email);
+        setSignupPassword(password);
         setRedirection({
             redirect: true,
             path,
@@ -57,9 +61,9 @@ const Login = (props) => {
                             style={{ width: "100%" }}
                             required
                             id="outlined-required"
-                            label="Username"
-                            value={username}
-                            onChange={event => handleUserInput("username", event.target.value)}
+                            label="Email"
+                            value={email}
+                            onChange={event => handleUserInput("email", event.target.value)}
                         />
                     </StyledComponents.TextFieldContainer>
 
@@ -103,13 +107,15 @@ const Login = (props) => {
 
 const ReduxLogin = connect(state => {
     return {
-        username: state.login.username,
+        email: state.login.email,
         password: state.login.password,
     }
 }, dispatch => {
     return {
-        setUsername: (username) => dispatch(Actions.login.setUsername(username)),
+        setEmail: (email) => dispatch(Actions.login.setEmail(email)),
         setPassword: (password) => dispatch(Actions.login.setPassword(password)),
+        setSignupEmail: (email) => dispatch(Actions.signup.setEmail(email)),
+        setSignupPassword: (password) => dispatch(Actions.signup.setPassword(password)),
     }
 })(Login);
 

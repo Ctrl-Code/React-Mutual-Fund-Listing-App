@@ -1,14 +1,14 @@
 const login = {
 
     types: {
-        setUsername: "login-setUsername",
+        setEmail: "login-setEmail",
         setPassword: "login-setPassword",
     },
 
-    setUsername: function (username) {
+    setEmail: function (email) {
         return {
-            type: this.types.setUsername,
-            username,
+            type: this.types.setEmail,
+            email,
         }
     },
 
