@@ -52,9 +52,12 @@ const Listing = () => {
     else
         return (
             <StyledComponents.FullPage>
-                <div>
+
+                <StyledComponents.MutualFundListingApp />
+
+                <StyledComponents.PageHeading>
                     Search Bar
-                </div>
+                </StyledComponents.PageHeading>
                 <div>
                     {
                         MutualFunds.map((option, index) => (

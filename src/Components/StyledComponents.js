@@ -17,10 +17,52 @@ const InputField = styled.input`
     padding: 0 10px;
 `;
 
+const MutualFundListingApp = styled.div`
+
+    margin-bottom: 15px;
+    text-align: center;
+    padding: 0 10px;
+
+    ::after{
+        color: rgb(75, 100, 193);
+        font-weight: 900;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 28px;
+        text-decoration: underline;
+        content: "MUTUAL FUND LISTING APP";
+    }
+`;
+
+const PageHeading = styled.div`
+    color: rgb(126 216 221);
+    font-weight: 500;
+    font-family: Verdana,Geneva,Tahoma,sans-serif;
+    font-size: 22px;
+    margin-bottom: 10px;
+    text-align: center;
+    padding: 0 20px;
+`;
+
+const MarginedDiv = styled.div`
+    height: ${props => props.height};
+`;
+
+const SubHeading = styled.div`
+    color: #d59373;
+    font-family: Verdana,Geneva,Tahoma,sans-serif;
+    font-size: 18px;
+    text-align: center;
+    padding: 0 10px;
+`;
+
 const exportObject = {
     styled,
     FullPage,
     InputField,
+    SubHeading,
+    PageHeading,
+    MutualFundListingApp,
+    MarginedDiv,
 }
 
 export default exportObject;

@@ -136,7 +136,12 @@ const Signup = () => {
 
     return (
         <StyledComponents.FullPage>
-            <div>Sign Up</div>
+
+            <StyledComponents.MutualFundListingApp />
+
+            <StyledComponents.PageHeading>
+                Sign Up
+            </StyledComponents.PageHeading>
             <form>
                 <Name />
                 <div />

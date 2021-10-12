@@ -44,6 +44,13 @@ const Login = (props) => {
 
     return (
         <StyledComponents.FullPage>
+
+            <StyledComponents.MutualFundListingApp />
+
+            <StyledComponents.PageHeading>
+                Login
+            </StyledComponents.PageHeading>
+
             <form>
 
                 <TextField
