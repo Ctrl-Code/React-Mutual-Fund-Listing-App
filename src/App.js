@@ -33,6 +33,10 @@ function App() {
                     <Signup />
                 </Route>
 
+                <Route exact path="/edit">
+                    <Signup />
+                </Route>
+
                 <Route exact path="/details"
                     render={state => <Details {...state} />} />
 

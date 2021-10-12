@@ -125,16 +125,24 @@ const DateOfBirth = connect(state => ({
         </StyledComponents.TextFieldContainer>
 );
 
-const ButtonSignup = ({ onClick }) => <StyledComponents.TextFieldContainer>
+const ButtonSignup = ({ onClick, editing }) => <StyledComponents.TextFieldContainer>
     <Button variant="contained"
         style={{ width: "100%" }}
         onClick={onClick}
     >
-        Sign Up
+        {editing === true ? "Save" : "Sign Up"}
     </Button>
 </StyledComponents.TextFieldContainer>;
 
 const Signup = () => {
+
+    // if editing
+    const localStorageEdit = localStorage.getItem("edit");
+    let editStatus;
+    if (!localStorageEdit)
+        editStatus = false;
+    else
+        editStatus = true;
 
     const [redirect, setRedirection] = useState({
         redirect: false,
@@ -176,7 +184,7 @@ const Signup = () => {
                 <DateOfBirth />
                 <StyledComponents.MarginedDiv height="30px" />
 
-                <ButtonSignup onClick={handleClick} />
+                <ButtonSignup onClick={handleClick} editing={editStatus} />
             </form>
 
         </StyledComponents.FullPage>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import StyledComponents from "../../Components/StyledComponents";
 
 import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 
 const RowWrapper = StyledComponents.styled.div`
     background-color: #bcdff3;
@@ -29,6 +30,55 @@ const FundName = StyledComponents.styled.div`
 const SchemeName = StyledComponents.styled.div`
     font-family: "sans-serif";
 `;
+
+const StyledSearchAndEditUserContainer = StyledComponents.styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+`;
+
+const StyledUsername = StyledComponents.styled.div`
+    overflow: hidden;
+    width: 72px;
+    font-family: monospace, "sans-serif";
+    font-size: 15px;
+    text-decoration: unset;
+    transition: text-decoration 250ms;
+    transition: font-size 250ms;
+    margin-bottom: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    :hover{
+        text-decoration: underline;
+    }
+`;
+
+const EditUser = connect(
+    state => ({
+        name: state.signup.name,
+        email: state.signup.email,
+    }), null
+)
+    (({ name, email }) => {
+
+        const [showEditPage, setShowEditPage] = useState(false);
+
+        const displayText = name.length > 0 ?
+            name :
+            email.slice(0, email.indexOf('@'));
+
+        if (showEditPage) {
+            localStorage.setItem('edit', "true");
+            return <Redirect push to="/edit" />
+        }
+
+        return <StyledUsername onClick={() => setShowEditPage(true)}>
+            {displayText}
+        </StyledUsername>
+    })
 
 const MutualFunds = [
     {
@@ -82,9 +132,12 @@ const Listing = () => {
 
                 <StyledComponents.MutualFundListingApp />
 
-                <StyledComponents.PageHeading>
-                    Search Bar
-                </StyledComponents.PageHeading>
+                <StyledSearchAndEditUserContainer>
+                    <StyledComponents.PageHeading>
+                        Search Bar
+                    </StyledComponents.PageHeading>
+                    <EditUser />
+                </StyledSearchAndEditUserContainer>
 
                 <div>
                     {
