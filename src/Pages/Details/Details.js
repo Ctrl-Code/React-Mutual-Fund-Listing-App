@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
 import StyledComponents from "../../Components/StyledComponents";
+import Actions from "../../Redux/Actions";
 
 import NavChart from "./NavChart";
 
@@ -147,7 +149,7 @@ const NavData = props => {
 
 function Details(props) {
 
-    const [data, setData] = useState();
+    const { data, setApiData } = props;
     const [showLoader, setShowLoader] = useState(true);
 
     const url = props?.location?.state?.mutualFundUrl;
@@ -156,7 +158,7 @@ function Details(props) {
         fetch(url).then(res => res.json())
             .then(res => {
                 console.log('the res is', res);
-                setData(res);
+                setApiData(res);
                 setShowLoader(false);
             })
     }, [url]);
@@ -180,4 +182,14 @@ function Details(props) {
     </StyledComponents.FullPage>
 }
 
-export default Details;
+const DetailsConnected = connect(state => {
+    return {
+        data: state.details.data,
+    }
+}, dispatch => {
+    return {
+        setApiData: (data) => dispatch(Actions.details.setApiData(data)),
+    }
+})(Details);
+
+export default DetailsConnected;

@@ -134,7 +134,7 @@ const Listing = () => {
 
                 <StyledSearchAndEditUserContainer>
                     <StyledComponents.PageHeading>
-                        Search Bar
+                        List
                     </StyledComponents.PageHeading>
                     <EditUser />
                 </StyledSearchAndEditUserContainer>
